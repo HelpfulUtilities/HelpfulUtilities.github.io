@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +24,9 @@
       color: rgb(230, 230, 230);
     }
 
-    select, textarea, button {
+    select,
+    textarea,
+    button {
       width: 100%;
       padding: 14px;
       margin: 15px 0;
@@ -40,35 +43,62 @@
     }
 
     #result {
-        cursor: default;
+      cursor: default;
     }
 
     #result:focus {
-        outline: none;
-        border-color: #333; /* Optional: maintain the border look */
+      outline: none;
+      border-color: #333;
+      /* Optional: maintain the border look */
     }
 
     button {
-      background-color: #4caf50;
-      color: white;
+      background-color: #4db2ec;
+      font-weight: 600;
+      color: rgb(46, 68, 138);
       border: none;
       cursor: pointer;
       transition: 0.5s;
     }
 
     button:hover {
-      background-color: #5fd863;
-      color: rgb(230, 230, 230);
+      background-color: #7bdaff;
     }
 
     label {
-      font-weight: bold;
+      font-weight: 600;
       display: block;
       margin-top: 10px;
       color: rgb(205, 205, 205);
     }
+
+    textarea::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    textarea::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+
+    textarea::-webkit-scrollbar-thumb {
+      background-color: #444;
+      border-radius: 6px;
+      border: 3px solid #1e1e1e;
+    }
+
+    /* Optional: hover effect */
+    textarea::-webkit-scrollbar-thumb:hover {
+      background-color: #666;
+    }
+
+    /* Firefox support */
+    textarea {
+      scrollbar-width: thin;
+      scrollbar-color: #444 #1e1e1e;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Base64 Conversion</h1>
@@ -82,13 +112,13 @@
   <label for="input">Input</label>
   <textarea id="input" placeholder="Enter text to encode or decode..."></textarea>
 
-  <button onclick="process()">Convert</button>
+  <button onclick="convert()">Convert</button>
 
   <label for="result">Output</label>
   <textarea id="result" readonly placeholder="No output yet..."></textarea>
 
   <script>
-    function process() {
+    function convert() {
       const action = document.getElementById("action").value;
       const input = document.getElementById("input").value;
       const resultBox = document.getElementById("result");
@@ -102,10 +132,11 @@
         }
         resultBox.value = result;
       } catch (e) {
-        resultBox.value = "❌ Error: Invalid input for decoding.";
+        resultBox.value = "Error: Invalid input.";
       }
     }
   </script>
 
 </body>
+
 </html>
